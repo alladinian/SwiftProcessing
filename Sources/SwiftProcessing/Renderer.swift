@@ -10,13 +10,11 @@ import CoreGraphics
 
 #if canImport(AppKit)
 import AppKit
-public typealias Color     = NSColor
 public typealias View      = NSView
 public typealias Slider    = NSSlider
 public typealias StackView = NSStackView
 #elseif canImport(UIKit)
 import UIKit
-public typealias Color     = UIColor
 public typealias View      = UIView
 public typealias Slider    = UISlider
 public typealias StackView = UIStackView
@@ -173,21 +171,6 @@ open class SPSView : View, Renderer {
         #if os(macOS)
         needsDisplay = true
         #endif
-    }
-}
-
-public extension View {
-
-    private var _layer: CALayer? {
-        layer
-    }
-
-    func background(_ white: Int) {
-        _layer?.backgroundColor = Color(white: CGFloat(white) / 255, alpha: 1.0).cgColor
-    }
-
-    func background(_ color: Color) {
-        _layer?.backgroundColor = color.cgColor
     }
 }
 

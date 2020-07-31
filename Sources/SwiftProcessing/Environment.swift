@@ -63,22 +63,6 @@ public func translate(_ x: CGFloat, _ y: CGFloat) {
     ctx?.translateBy(x: x, y: y)
 }
 
-public func stroke(_ white: Int) {
-    Color(white: CGFloat(white) / 255, alpha: 1.0).setStroke()
-}
-
-public func fill(_ color: Color) {
-    color.setFill()
-}
-
-public func stroke(_ color: Color) {
-    color.setStroke()
-}
-
-public func noStroke() {
-    Color(white: 0, alpha: 0).setStroke()
-}
-
 public func random(_ n: CGFloat) -> CGFloat {
     let r: Int = random(n)
     return CGFloat(r)

@@ -89,7 +89,7 @@ This will launch a window and run your sketch.
 - [x] square()
 - [x] triangle()
 
-**Mouse Input**
+**Input / Mouse**
 - [x] mouseButton
 - [x] mouseClicked()
 - [x] mouseDragged()
@@ -126,3 +126,23 @@ This will launch a window and run your sketch.
 - [x] lerp()
 - [x] angleBetween()
 - [x] array()
+
+**Curves**
+- [x] bezier()
+- [ ] bezierDetail()
+- [ ] bezierPoint()
+- [ ] bezierTangent()
+- [ ] curve()
+- [ ] curveDetail()
+- [ ] curvePoint()
+- [ ] curveTangent()
+- [ ] curveTightness()
+
+**Color / Setting**
+- [x] background()
+- [ ] clear()
+- [ ] colorMode()
+- [x] fill()
+- [x] noFill()
+- [x] noStroke()
+- [x] stroke()
