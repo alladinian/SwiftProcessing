@@ -195,6 +195,14 @@ This will launch a window and run your sketch.
 - [x] sin()
 - [x] tan()
 
+**Math / Random**
+- [ ] noise()
+- [ ] noiseDetail()
+- [ ] noiseSeed()
+- [x] random()
+- [x] randomGaussian()
+- [ ] randomSeed()
+
 **Constants**
 - [x] HALF_PI
 - [x] PI

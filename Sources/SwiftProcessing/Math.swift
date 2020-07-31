@@ -7,6 +7,7 @@
 
 import Foundation
 import simd
+import GameKit
 
 //MARK: - Calculation
 
@@ -105,4 +106,37 @@ public func random(_ min: Int, _ max: Int) -> CGFloat {
 
 public func random(_ min: Int, _ max: Int) -> Int {
     Int(arc4random_uniform(UInt32(max - min))) + min
+}
+
+/*
+public func random(_ low: CGFloat, _ high: CGFloat) -> CGFloat {
+    CGFloat(GKRandomDistribution(randomSource: randomSource, lowestValue: Int(low), highestValue: Int(high)).nextUniform())
+}
+
+public func random(_ n: CGFloat) -> Int {
+    Int(random(0, n))
+}
+
+public func random(_ n: CGFloat) -> CGFloat {
+    random(0, n)
+}
+
+public func random(_ n: Int) -> Int {
+    Int(random(0, CGFloat(n)))
+}
+
+private var randomSeed: UInt64?
+private let randomSource: GKRandomSource = {
+    guard let seed = randomSeed else {
+        return GKARC4RandomSource()
+    }
+    return GKMersenneTwisterRandomSource(seed: seed)
+}()
+*/
+
+private let gaussianRandomSource = GKRandomSource()
+private let gaussianDistribution = GKGaussianDistribution(randomSource: gaussianRandomSource, mean: 0, deviation: 1)
+
+public func randomGaussian() -> CGFloat {
+    CGFloat(gaussianDistribution.nextUniform())
 }
