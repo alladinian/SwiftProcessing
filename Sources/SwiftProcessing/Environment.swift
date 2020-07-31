@@ -1,17 +1,6 @@
 import Foundation
 import CoreGraphics
 
-//MARK: - Constants
-
-public let HALF_PI    = CGFloat.pi / 2.0
-public let PI         = CGFloat.pi
-public let TWO_PI     = CGFloat.pi * 2.0
-public let TAU        = CGFloat.pi * 2.0
-public let QUARTER_PI = CGFloat.pi / 4.0
-
-
-
-
 
 //MARK: - Context
 
@@ -33,14 +22,6 @@ public var height: CGFloat {
 
 public func rotateBy(_ angle: CGFloat) {
     ctx?.rotate(by: angle)
-}
-
-public func strokeWeight(_ n: Int) {
-    strokeWeight(CGFloat(n))
-}
-
-public func strokeWeight(_ n: CGFloat) {
-    ctx?.setLineWidth(n)
 }
 
 public func translate(_ x: CGFloat, _ y: CGFloat) {

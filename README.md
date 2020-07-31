@@ -78,7 +78,7 @@ This will launch a window and run your sketch.
 
 ## Current api status
 
-**2D Primitives**
+**Shape / 2D Primitives**
 - [x] arc()
 - [x] circle()
 - [x] ellipse()
@@ -127,7 +127,7 @@ This will launch a window and run your sketch.
 - [x] angleBetween()
 - [x] array()
 
-**Curves**
+**Shape / Curves**
 - [x] bezier()
 - [ ] bezierDetail()
 - [ ] bezierPoint()
@@ -137,6 +137,13 @@ This will launch a window and run your sketch.
 - [ ] curvePoint()
 - [ ] curveTangent()
 - [ ] curveTightness()
+
+** Shape / Attributes**
+- [ ] ellipseMode()
+- [ ] rectMode()
+- [x] strokeCap()
+- [x] strokeJoin()
+- [x] strokeWeight()
 
 **Color / Setting**
 - [x] background()
@@ -187,3 +194,10 @@ This will launch a window and run your sketch.
 - [x] radians()
 - [x] sin()
 - [x] tan()
+
+**Constants**
+- [x] HALF_PI
+- [x] PI
+- [x] QUARTER_PI
+- [x] TAU
+- [x] TWO_PI

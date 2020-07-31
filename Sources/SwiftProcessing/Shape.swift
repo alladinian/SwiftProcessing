@@ -8,20 +8,7 @@
 import Foundation
 import CoreGraphics
 
-public enum EllipseMode: Int {
-    case center, radius, corner, corners
-}
-
-public let CENTER  = EllipseMode.center
-public let RADIUS  = EllipseMode.radius
-public let CORNER  = EllipseMode.corner
-public let CORNERS = EllipseMode.corners
-
-var currentEllipseMode: EllipseMode = .center
-
-public func ellipseMode(_ mode: EllipseMode) {
-
-}
+//MARK: - 2D Primitives
 
 /**
  Draws an arc to the screen. Arcs are drawn along the outer edge of an ellipse defined by the a, b, c, and d parameters. The origin of the arc's ellipse may be changed with the ellipseMode() function. Use the start and stop parameters to specify the angles (in radians) at which to draw the arc. The start/stop values must be in clockwise order.
@@ -254,17 +241,50 @@ public func triangle(_ x1: CGFloat,
     path.stroke()
 }
 
+//MARK: - Attributes
 
+public func strokeWeight(_ n: Int) {
+    strokeWeight(CGFloat(n))
+}
 
+public func strokeWeight(_ n: CGFloat) {
+    ctx?.setLineWidth(n)
+}
 
+public enum EllipseMode: Int {
+    case center, radius, corner, corners
+}
 
+public let CENTER  = EllipseMode.center
+public let RADIUS  = EllipseMode.radius
+public let CORNER  = EllipseMode.corner
+public let CORNERS = EllipseMode.corners
 
+var currentEllipseMode: EllipseMode = .center
 
+public func ellipseMode(_ mode: EllipseMode) {
 
+}
 
+public extension CGLineCap {
+    static let PROJECT = CGLineCap.butt
+    static let ROUND   = CGLineCap.round
+    static let SQUARE  = CGLineCap.square
+}
 
+public extension CGLineJoin {
+    static let MITER = CGLineJoin.miter
+    static let BEVEL = CGLineJoin.bevel
+    static let ROUND = CGLineJoin.round
+}
 
+public func strokeCap(_ cap: CGLineCap) {
+    ctx?.setLineCap(cap)
+}
 
+public func strokeJoin(_ join: CGLineJoin) {
+    ctx?.setLineJoin(join)
+}
 
 
 

@@ -74,3 +74,11 @@ public func degrees(_ radians: CGFloat) -> CGFloat {
 public func radians(_ degrees: CGFloat) -> CGFloat {
     degrees * .pi / 180
 }
+
+//MARK: - Constants
+
+public let HALF_PI    = CGFloat.pi / 2.0
+public let PI         = CGFloat.pi
+public let TWO_PI     = CGFloat.pi * 2.0
+public let TAU        = CGFloat.pi * 2.0
+public let QUARTER_PI = CGFloat.pi / 4.0
