@@ -14,6 +14,8 @@ import UIKit
 public typealias Color = UIColor
 #endif
 
+//MARK: - Setting
+
 public extension View {
 
     private var _layer: CALayer? {
@@ -52,4 +54,56 @@ public func stroke(_ white: Int, _ alpha: CGFloat = 1.0) {
 
 public func noStroke() {
     Color(white: 0, alpha: 0).setStroke()
+}
+
+//MARK: - Creating & Reading
+
+extension Color {
+    var alpha: CGFloat { alphaComponent }
+    var red: CGFloat { redComponent }
+    var green: CGFloat { greenComponent }
+    var blue: CGFloat { blueComponent }
+    var hue: CGFloat { hueComponent }
+    var saturation: CGFloat { saturationComponent }
+    var brightness: CGFloat { brightnessComponent }
+
+    convenience init(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 1.0) {
+        self.init(red: v1, green: v2, blue: v3, alpha: alpha)
+    }
+}
+
+public func color(_ white: Int, _ alpha: CGFloat = 1.0) -> Color {
+    Color(white: CGFloat(white) / 255, alpha: alpha)
+}
+
+public func color(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 1.0) -> Color {
+    Color(red: v1, green: v2, blue: v3, alpha: alpha)
+}
+
+public func alpha(_ c: Color) -> CGFloat {
+    c.alpha
+}
+
+public func red(_ c: Color) -> CGFloat {
+    c.red
+}
+
+public func green(_ c: Color) -> CGFloat {
+    c.green
+}
+
+public func blue(_ c: Color) -> CGFloat {
+    c.blue
+}
+
+public func hue(_ c: Color) -> CGFloat {
+    c.hue
+}
+
+public func saturation(_ c: Color) -> CGFloat {
+    c.saturation
+}
+
+public func brightness(_ c: Color) -> CGFloat {
+    c.brightness
 }

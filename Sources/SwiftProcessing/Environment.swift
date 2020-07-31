@@ -9,25 +9,9 @@ public let TWO_PI     = CGFloat.pi * 2.0
 public let TAU        = CGFloat.pi * 2.0
 public let QUARTER_PI = CGFloat.pi / 4.0
 
-//MARK: - Trigonometry
 
-// Already provided by the system
 
-// acos()
-// cos()
-// sin()
-// tan()
-// asin()
-// atan()
-// atan2()
 
-public func degrees(_ radians: CGFloat) -> CGFloat {
-    radians * 180 / .pi
-}
-
-public func radians(_ degrees: CGFloat) -> CGFloat {
-    degrees * .pi / 180
-}
 
 //MARK: - Context
 
@@ -85,6 +69,4 @@ public func random(_ min: Int, _ max: Int) -> Int {
     Int(arc4random_uniform(UInt32(max - min))) + min
 }
 
-public func map(_ value: CGFloat, _ minRange: CGFloat, _ maxRange: CGFloat, _ minDomain: CGFloat, _ maxDomain: CGFloat) -> CGFloat {
-    minDomain + (maxDomain - minDomain) * (value - minRange) / (maxRange - minRange)
-}
+
