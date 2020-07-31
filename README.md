@@ -102,3 +102,27 @@ This will launch a window and run your sketch.
 - [x] mouseY
 - [x] pmouseX
 - [x] pmouseY
+
+**PVector**
+- [x] set()
+- [x] random2D()
+- [x] random3D()
+- [x] fromAngle()
+- [x] copy()
+- [x] mag()
+- [x] magSq()
+- [x] add()
+- [x] sub()
+- [x] mult()
+- [x] div()
+- [x] dist()
+- [x] dot()
+- [x] cross()
+- [x] normalize()
+- [x] limit()
+- [x] setMag()
+- [x] heading()
+- [x] rotate()
+- [x] lerp()
+- [x] angleBetween()
+- [x] array()
