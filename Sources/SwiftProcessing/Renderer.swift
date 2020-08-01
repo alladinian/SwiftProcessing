@@ -69,6 +69,11 @@ open class SPSView : View, Renderer {
     public var width: CGFloat { bounds.width }
     public var height: CGFloat { bounds.height }
 
+    public func size(_ w: CGFloat, _ h: CGFloat) {
+        bounds.size.width  = w
+        bounds.size.height = h
+    }
+
     #if os(iOS)
     public override init(frame: CGRect) {
         super.init(frame: frame)

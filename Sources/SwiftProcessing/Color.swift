@@ -36,8 +36,8 @@ public func fill(_ color: Color) {
     color.setFill()
 }
 
-public func fill(_ white: Int, _ alpha: CGFloat = 1.0) {
-    Color(white: CGFloat(white) / 255, alpha: alpha).setFill()
+public func fill(_ white: Int, _ alpha: CGFloat = 255) {
+    Color(white: CGFloat(white) / 255, alpha: alpha / 255).setFill()
 }
 
 public func noFill() {
@@ -48,8 +48,8 @@ public func stroke(_ color: Color) {
     color.setStroke()
 }
 
-public func stroke(_ white: Int, _ alpha: CGFloat = 1.0) {
-    Color(white: CGFloat(white) / 255, alpha: alpha).setStroke()
+public func stroke(_ white: Int, _ alpha: CGFloat = 255) {
+    Color(white: CGFloat(white) / 255, alpha: alpha / 255).setStroke()
 }
 
 public func noStroke() {
@@ -67,17 +67,17 @@ extension Color {
     var saturation: CGFloat { saturationComponent }
     var brightness: CGFloat { brightnessComponent }
 
-    convenience init(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 1.0) {
-        self.init(red: v1, green: v2, blue: v3, alpha: alpha)
+    convenience init(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 255) {
+        self.init(red: v1 / 255, green: v2 / 255, blue: v3 / 255, alpha: alpha / 255)
     }
 }
 
-public func color(_ white: Int, _ alpha: CGFloat = 1.0) -> Color {
-    Color(white: CGFloat(white) / 255, alpha: alpha)
+public func color(_ white: Int, _ alpha: CGFloat = 255) -> Color {
+    Color(white: CGFloat(white) / 255, alpha: alpha / 255)
 }
 
-public func color(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 1.0) -> Color {
-    Color(red: v1, green: v2, blue: v3, alpha: alpha)
+public func color(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 255) -> Color {
+    Color(red: v1 / 255, green: v2 / 255, blue: v3 / 255, alpha: alpha / 255)
 }
 
 public func alpha(_ c: Color) -> CGFloat {

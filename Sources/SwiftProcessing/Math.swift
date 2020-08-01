@@ -23,7 +23,7 @@ import GameKit
 // round()
 // sqrt()
 
-public func constrain(_ amt: CGFloat, _ low: CGFloat, _ high: CGFloat) -> CGFloat {
+public func constrain<T: Comparable>(_ amt: T, _ low: T, _ high: T) -> T {
     min(max(amt, low), high)
 }
 
@@ -68,11 +68,11 @@ public func sq(_ n: CGFloat) -> CGFloat {
 // tan()
 
 
-public func degrees(_ radians: CGFloat) -> CGFloat {
+public func degrees<T: FloatingPoint>(_ radians: T) -> T {
     radians * 180 / .pi
 }
 
-public func radians(_ degrees: CGFloat) -> CGFloat {
+public func radians<T: FloatingPoint>(_ degrees: T) -> T {
     degrees * .pi / 180
 }
 
@@ -99,8 +99,8 @@ public func random(_ n: Int) -> Int {
     Int(arc4random_uniform(UInt32(n)))
 }
 
-public func random(_ min: Int, _ max: Int) -> CGFloat {
-    let r: Int = random(min, max)
+public func random(_ min: CGFloat, _ max: CGFloat) -> CGFloat {
+    let r: Int = random(Int(min), Int(max))
     return CGFloat(r)
 }
 
@@ -139,4 +139,15 @@ private let gaussianDistribution = GKGaussianDistribution(randomSource: gaussian
 
 public func randomGaussian() -> CGFloat {
     CGFloat(gaussianDistribution.nextUniform())
+}
+
+private let perlinNoiseSource = GKPerlinNoiseSource()
+
+public func noise(_ x: CGFloat, _ y: CGFloat = 0) -> CGFloat {
+    CGFloat(noise(Float(x), Float(x)))
+}
+
+public func noise(_ x: Float, _ y: Float = 0) -> Float {
+    let position = simd_float2(x, y)
+    return GKNoise(perlinNoiseSource).value(atPosition: position)
 }
