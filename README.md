@@ -87,7 +87,7 @@ or
 
 This will launch a window and run your sketch.
 
-![image](https://i.ibb.co/Lrm73s0/Screen-Shot-2020-07-31-at-5-36-45-PM.png)
+![image](https://i.ibb.co/c18BBRY/Fractal-Tree.gif)
 
 ## Current api status
 
