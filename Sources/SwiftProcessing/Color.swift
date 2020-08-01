@@ -40,6 +40,10 @@ public func fill(_ white: Int, _ alpha: CGFloat = 255) {
     Color(white: CGFloat(white) / 255, alpha: alpha / 255).setFill()
 }
 
+public func fill(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat) {
+    Color(r, g, b).setFill()
+}
+
 public func noFill() {
     Color(white: 0, alpha: 0).setFill()
 }

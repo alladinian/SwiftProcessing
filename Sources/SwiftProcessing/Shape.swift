@@ -93,9 +93,35 @@ public func ellipse(_ a: CGFloat,
                     _ b: CGFloat,
                     _ c: CGFloat,
                     _ d: CGFloat) {
-    let path = BezierPath(ovalIn: .init(x: a, y: b, width: c, height: d))
+    push()
+
+    var c = c
+    var d = d
+    var crect: CGRect?
+
+    switch currentEllipseMode {
+    case .center:
+        translate(-c/2, -d/2)
+    case .radius:
+        translate(-c/2, -d/2)
+        c *= 2
+        d *= 2
+    case .corner:
+        break // The default behavior
+    case .corners:
+        let p1 = CGPoint(x: a, y: b)
+        let p2 = CGPoint(x: c, y: d)
+        crect = CGRect(x: min(p1.x, p2.x),
+                       y: min(p1.y, p2.y),
+                       width: abs(p1.x - p2.x),
+                       height: abs(p1.y - p2.y))
+    }
+
+    let path = BezierPath(ovalIn: crect ?? .init(x: a, y: b, width: c, height: d))
     path.stroke()
     path.fill()
+
+    pop()
 }
 
 /**

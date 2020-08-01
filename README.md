@@ -139,7 +139,7 @@ This will launch a window and run your sketch.
 - [ ] curveTightness()
 
 ** Shape / Attributes**
-- [ ] ellipseMode()
+- [x] ellipseMode()
 - [ ] rectMode()
 - [x] strokeCap()
 - [x] strokeJoin()
@@ -196,7 +196,7 @@ This will launch a window and run your sketch.
 - [x] tan()
 
 **Math / Random**
-- [ ] noise()
+- [x] noise()
 - [ ] noiseDetail()
 - [ ] noiseSeed()
 - [x] random()
