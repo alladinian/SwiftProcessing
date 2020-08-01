@@ -20,10 +20,14 @@ Part of Processing's appeal is the simplicity & how quickly you can prototype id
 So here is a workflow that I found to be working quite well (if you know a better way you are welcome to contribute or let me know):
 
 1. Install [swift sh](https://github.com/mxcl/swift-sh)
+
    `brew install swift-sh`
+
    or
+
    `mint install mxcl/swift-sh`
-   this will essentialy enable us to import packages in a Swift file.
+
+   This will enable importing of packages in a Swift file.
 
 2. Import `SwiftProcessing` in a .swift file in the editor of your choice and write a sketch:
 
@@ -71,6 +75,15 @@ let sketch = FractalTreeSketch(size: .init(width: 400, height: 400))
 
 launchSketch(sketch)
 ```
+
+Finally, execute the sketch file:
+
+`$ swift sh mySketch.swift`
+
+or
+
+`$ chmod u+x mySketch.swift`
+`$ ./mySketch.swift`
 
 This will launch a window and run your sketch.
 
@@ -138,12 +151,22 @@ This will launch a window and run your sketch.
 - [ ] curveTangent()
 - [ ] curveTightness()
 
-** Shape / Attributes**
+**Shape / Attributes**
 - [x] ellipseMode()
 - [ ] rectMode()
 - [x] strokeCap()
 - [x] strokeJoin()
 - [x] strokeWeight()
+
+*Shape / Vertex**
+- [ ] beginContour()
+- [x] beginShape()
+- [ ] bezierVertex()
+- [ ] curveVertex()
+- [ ] endContour()
+- [x] endShape()
+- [ ] quadraticVertex()
+- [x] vertex()
 
 **Color / Setting**
 - [x] background()
