@@ -95,7 +95,7 @@ There are some examples also included in the package, such as this beautiful noi
 
 ## Technical Details
 The current implementation relies on `CoreGraphics` to perform drawing and `CADisplayLink` / `CVDisplayLink` for screen updates. 
-Eventually different renderers could be used with a protocol oriented approach for possible improvments in performance.
+Eventually different renderers could be used with a protocol oriented approach for possible improvements in performance.
 Another significant missing piece is glsl shaders and 3D support. We could leverage `SpriteKit` & `SceneKit` for that.
 
 ## Supported Features
