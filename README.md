@@ -168,7 +168,7 @@ This is a list of features currently implemented. You can use this list as a ref
 - [x] strokeJoin()
 - [x] strokeWeight()
 
-*Shape / Vertex**
+**Shape / Vertex**
 - [ ] beginContour()
 - [x] beginShape()
 - [ ] bezierVertex()
