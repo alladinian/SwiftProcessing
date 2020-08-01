@@ -144,7 +144,7 @@ public func randomGaussian() -> CGFloat {
 private let perlinNoiseSource = GKPerlinNoiseSource()
 
 public func noise(_ x: CGFloat, _ y: CGFloat = 0) -> CGFloat {
-    CGFloat(noise(Float(x), Float(x)))
+    CGFloat(noise(Float(x), Float(y)))
 }
 
 public func noise(_ x: Float, _ y: Float = 0) -> Float {

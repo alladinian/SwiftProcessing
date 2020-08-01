@@ -312,7 +312,33 @@ public func strokeJoin(_ join: CGLineJoin) {
     ctx?.setLineJoin(join)
 }
 
+//MARK: - Vertex
 
+public enum EndShapeMode: Int {
+    case open, close
+}
+
+extension View {
+    public var CLOSE: EndShapeMode { EndShapeMode.close }
+}
+
+public func beginShape() {
+    ctx?.beginPath()
+}
+
+public func endShape(_ mode: EndShapeMode = .open) {
+    defer { ctx?.fillPath() }
+    guard mode == .close else { return }
+    ctx?.closePath()
+}
+
+public func vertex(_ x: CGFloat, _ y: CGFloat) {
+    guard ctx?.isPathEmpty == false else {
+        ctx?.move(to: .init(x: x, y: y))
+        return
+    }
+    ctx?.addLine(to: .init(x: x, y: y))
+}
 
 
 
