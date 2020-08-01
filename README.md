@@ -87,9 +87,19 @@ or
 
 This will launch a window and run your sketch.
 
-![image](https://i.ibb.co/c18BBRY/Fractal-Tree.gif)
+![tree](https://i.ibb.co/c18BBRY/Fractal-Tree.gif)
 
-## Current api status
+There are some examples also included in the package, such as this beautiful noise wave
+
+![noisewave](https://i.ibb.co/Wsjjx9W/Noise-Wave.gif)
+
+## Technical Details
+The current implementation relies on `CoreGraphics` to perform drawing and `CADisplayLink` / `CVDisplayLink` for screen updates. 
+Eventually different renderers could be used with a protocol oriented approach for possible improvments in performance.
+Another significant missing piece is glsl shaders and 3D support. We could leverage `SpriteKit` & `SceneKit` for that.
+
+## Supported Features
+This is a list of features currently implemented. You can use this list as a reference or even a starting point for contributing to this project. You can find the full list of Processing features [here](https://processing.org/reference/).
 
 **Shape / 2D Primitives**
 - [x] arc()
@@ -232,3 +242,11 @@ This will launch a window and run your sketch.
 - [x] QUARTER_PI
 - [x] TAU
 - [x] TWO_PI
+
+## Authors
+Vasilis Akoinoglou, alladinian@gmail.com
+Twitter: @alladinian
+
+## License
+
+**SwiftProcessing** is available under the MIT license. See the LICENSE file for more info.
