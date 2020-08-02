@@ -12,6 +12,37 @@ public typealias Color = NSColor
 #if canImport(UIKit)
 import UIKit
 public typealias Color = UIColor
+
+extension UIColor {
+    var alphaComponent: CGFloat {
+        cgColor.alpha
+    }
+    var redComponent: CGFloat {
+        cgColor.components![0]
+    }
+    var greenComponent: CGFloat {
+        cgColor.components![1]
+    }
+    var blueComponent: CGFloat {
+        cgColor.components![2]
+    }
+    var hueComponent: CGFloat {
+        var component: CGFloat!
+        getHue(&component, saturation: nil, brightness: nil, alpha: nil)
+        return component
+    }
+    var saturationComponent: CGFloat {
+        var component: CGFloat!
+        getHue(nil, saturation: &component, brightness: nil, alpha: nil)
+        return component
+    }
+    var brightnessComponent: CGFloat {
+        var component: CGFloat!
+        getHue(nil, saturation: nil, brightness: &component, alpha: nil)
+        return component
+    }
+}
+
 #endif
 
 //MARK: - Setting

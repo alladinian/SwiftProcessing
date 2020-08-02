@@ -7,6 +7,9 @@
 
 import Foundation
 
+#if canImport(AppKit)
+import AppKit
+
 public class MapSketch: SPSView {
 
     public override func setup() {
@@ -24,3 +27,5 @@ public class MapSketch: SPSView {
     }
 
 }
+
+#endif

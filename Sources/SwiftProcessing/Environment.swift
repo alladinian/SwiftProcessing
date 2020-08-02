@@ -4,6 +4,12 @@ import CoreGraphics
 
 //MARK: - Context
 
+extension CGFloat {
+    init<T: FloatingPoint>(_ n: T) {
+        self = n as! CGFloat
+    }
+}
+
 public func push() {
     ctx?.saveGState()
 }
@@ -27,7 +33,3 @@ public func rotateBy(_ angle: CGFloat) {
 public func translate(_ x: CGFloat, _ y: CGFloat) {
     ctx?.translateBy(x: x, y: y)
 }
-
-
-
-
