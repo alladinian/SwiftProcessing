@@ -180,7 +180,7 @@ This is a list of features currently implemented. You can use this list as a ref
 
 **Color / Setting**
 - [x] background()
-- [ ] clear()
+- [x] clear()
 - [ ] colorMode()
 - [x] fill()
 - [x] noFill()
@@ -244,7 +244,7 @@ This is a list of features currently implemented. You can use this list as a ref
 - [x] TWO_PI
 
 ## Authors
-Vasilis Akoinoglou, alladinian@gmail.com
+Vasilis Akoinoglou, alladinian@gmail.com  
 Twitter: @alladinian
 
 ## License

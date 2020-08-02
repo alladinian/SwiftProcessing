@@ -4,12 +4,6 @@ import CoreGraphics
 
 //MARK: - Context
 
-extension CGFloat {
-    init<T: FloatingPoint>(_ n: T) {
-        self = n as! CGFloat
-    }
-}
-
 public func push() {
     ctx?.saveGState()
 }
@@ -40,4 +34,10 @@ public func smooth() {
 
 public func noSmooth() {
     ctx?.setShouldAntialias(false)
+}
+
+extension View {
+    public func clear() {
+        ctx?.clear(bounds)
+    }
 }
