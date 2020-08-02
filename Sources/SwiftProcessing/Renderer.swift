@@ -105,6 +105,7 @@ open class SPSView : View, Renderer {
         #if os(iOS)
         link?.add(to: .current, forMode: .default)
         stackView.axis = .vertical
+        isOpaque = false
         #endif
 
         #if os(macOS)
