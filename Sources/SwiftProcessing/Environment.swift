@@ -20,7 +20,7 @@ public var height: CGFloat {
     CGFloat(ctx?.height ?? 0)
 }
 
-public func rotateBy(_ angle: CGFloat) {
+public func rotate(_ angle: CGFloat) {
     ctx?.rotate(by: angle)
 }
 

@@ -39,36 +39,36 @@ import SwiftProcessing // @alladinian
 
 class FractalTreeSketch: SPSView {
 
-	var angle: CGFloat!
-	var slider: Slider!
+    var angle: CGFloat!
+    var slider: Slider!
 
-	override func setup() {
-		slider = createSlider(0, TWO_PI, PI/4, 0.01)
-	}
+    override func setup() {
+        slider = createSlider(0, TWO_PI, PI/4, 0.01)
+    }
 
-	override func draw() {
-		strokeWeight(1)
-		background(20)
-		angle = CGFloat(slider.doubleValue)
-		stroke(255)
-		translate(width/2, height)
-		branch(height * 0.3)
-	}
+    override func draw() {
+        strokeWeight(1)
+        background(20)
+        angle = CGFloat(slider.doubleValue)
+        stroke(255)
+        translate(width/2, height)
+        branch(height * 0.3)
+    }
 
-	func branch(_ len: CGFloat) {
-		line(0, 0, 0, -len)
-		translate(0, -len)
-		if len > 4 {
-			push()
-			rotateBy(angle)
-			branch(len * 0.67)
-			pop()
-			push()
-			rotateBy(-angle)
-			branch(len * 0.67)
-			pop()
-		}
-	}
+    func branch(_ len: CGFloat) {
+        line(0, 0, 0, -len)
+        translate(0, -len)
+        if len > 4 {
+            push()
+            rotate(angle)
+            branch(len * 0.67)
+            pop()
+            push()
+            rotate(-angle)
+            branch(len * 0.67)
+            pop()
+        }
+    }
 }
 
 let sketch = FractalTreeSketch(size: .init(width: 400, height: 400))
