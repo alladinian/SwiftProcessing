@@ -28,6 +28,10 @@ public func translate(_ x: CGFloat, _ y: CGFloat) {
     ctx?.translateBy(x: x, y: y)
 }
 
+func scale(_ x: CGFloat, _ y: CGFloat) {
+    ctx?.scaleBy(x: x, y: y)
+}
+
 public func smooth() {
     ctx?.setShouldAntialias(true)
 }
