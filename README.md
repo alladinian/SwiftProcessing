@@ -155,7 +155,7 @@ This is a list of features currently implemented. You can use this list as a ref
 - [ ] bezierDetail()
 - [ ] bezierPoint()
 - [ ] bezierTangent()
-- [ ] curve()
+- [x] curve()
 - [ ] curveDetail()
 - [ ] curvePoint()
 - [ ] curveTangent()

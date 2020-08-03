@@ -18,7 +18,7 @@ public func launchSketch(_ view: SPSView) {
     let quitTitle                     = "Quit \(appName)"
     let quitMenuItem                  = NSMenuItem(title: quitTitle, action: #selector(NSApplication.terminate), keyEquivalent: "q")
     let windowRect                    = view.bounds
-    let styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, /*.resizable,*/ .fullSizeContentView]
+    let styleMask: NSWindow.StyleMask = [.titled, .closable, .miniaturizable, /*.resizable, .fullSizeContentView*/]
     let window                        = NSWindow(contentRect: windowRect, styleMask: styleMask, backing: .buffered,  defer: false)
 
     app.setActivationPolicy(.regular)
