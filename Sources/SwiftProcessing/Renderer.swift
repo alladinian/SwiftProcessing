@@ -18,6 +18,13 @@ import UIKit
 public typealias View      = UIView
 public typealias Slider    = UISlider
 public typealias StackView = UIStackView
+
+extension UISlider {
+    public var doubleValue: CGFloat {
+        CGFloat(value)
+    }
+}
+
 #endif
 
 var ctx: CGContext? {

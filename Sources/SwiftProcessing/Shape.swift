@@ -289,7 +289,7 @@ public let CORNERS = EllipseMode.corners
 var currentEllipseMode: EllipseMode = .center
 
 public func ellipseMode(_ mode: EllipseMode) {
-
+    currentEllipseMode = mode
 }
 
 public extension CGLineCap {
