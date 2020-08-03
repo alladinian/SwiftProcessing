@@ -236,6 +236,15 @@ This is a list of features currently implemented. You can use this list as a ref
 - [x] randomGaussian()
 - [ ] randomSeed()
 
+**Time & Date**
+- [x] day()
+- [x] hour()
+- [x] millis()
+- [x] minute()
+- [x] month()
+- [x] second()
+- [x] year()
+
 **Constants**
 - [x] HALF_PI
 - [x] PI
