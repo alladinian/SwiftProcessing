@@ -106,7 +106,7 @@ This is a list of features currently implemented. You can use this list as a ref
 - [x] circle()
 - [x] ellipse()
 - [x] line()
-- [ ] point()
+- [x] point()
 - [x] quad()
 - [x] rect()
 - [x] square()

@@ -157,7 +157,7 @@ public func line(_ x1: CGFloat,
    - y: y-coordinate of the point
 */
 public func point(_ x: CGFloat, _ y: CGFloat) {
-    #warning("Missing implementation")
+    line(x, y, x + currentStrokeWeight, y)
 }
 
 /**
@@ -269,12 +269,15 @@ public func triangle(_ x1: CGFloat,
 
 //MARK: - Attributes
 
+var currentStrokeWeight: CGFloat = 1.0
+
 public func strokeWeight(_ n: Int) {
     strokeWeight(CGFloat(n))
 }
 
 public func strokeWeight(_ n: CGFloat) {
     ctx?.setLineWidth(n)
+    currentStrokeWeight = n
 }
 
 public enum EllipseMode: Int {
