@@ -1,6 +1,8 @@
 # SwiftProcessing
 A [Processing](https://processing.org/) Environment for Swift
 
+> Please note that the project is under active development, so it is subject to frequent changes. 
+
 ## What is it?
 This project is an attempt to maintain the same Processing-style prototyping experience as much as possible. It also tries to follow the original apis in order to achieve sketch compatibility with minimal changes. It is _not_ a Swift Processing mode and is not affiliated with the Processing Foundation.
 
