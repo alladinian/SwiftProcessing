@@ -152,6 +152,33 @@ This is a list of features currently implemented. You can use this list as a ref
 - [x] angleBetween()
 - [x] array()
 
+**PImage**
+- [ ] createImage()
+- [x] loadImage()
+- [ ] pixels
+- [x] width
+- [x] height
+- [ ] loadPixels()
+- [ ] updatePixels()
+- [ ] resize()
+- [ ] get()
+- [ ] set()
+- [ ] mask()
+- [x] filter()
+- [ ] copy()
+- [ ] blend()
+- [ ] save()
+
+**PImage / Filters**
+- [x] THRESHOLD
+- [x] GRAY
+- [ ] OPAQUE
+- [x] INVERT
+- [x] POSTERIZE
+- [x] BLUR
+- [ ] ERODE
+- [ ] DILATE
+
 **Shape / Curves**
 - [x] bezier()
 - [ ] bezierDetail()

@@ -185,5 +185,11 @@ open class SPSView : View, Renderer {
         needsDisplay = true
         #endif
     }
+
+    public func image(_ image: PImage, _ x: CGFloat, _ y: CGFloat) {
+        addSubview(image)
+        image.frame.size = image.image?.size ?? .zero
+        image.frame.origin = .init(x: x, y: y)
+    }
 }
 
