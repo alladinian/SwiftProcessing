@@ -56,6 +56,7 @@ public enum PImageFilter {
         case .posterize: return CIFilter(name: "CIColorPosterize")!
         case .blur:      return CIFilter(name: "CIGaussianBlur")!
         case .threshold: return ThresholdFilter()
+        case .opaque:    return OpaqueFilter()
         default:
             print("Filter not implemented yet")
             return nil
@@ -147,5 +148,24 @@ class ThresholdFilter: CIFilter {
         let arguments = [inputImage, inputThreshold] as [Any]
 
         return thresholdKernel.apply(extent: extent, arguments: arguments)
+    }
+}
+
+class OpaqueFilter: CIFilter {
+    @objc dynamic var inputImage : CIImage?
+    let kernel = CIColorKernel(source:
+        """
+        kernel vec4 thresholdFilter(__sample image) {
+            return vec4(image.r, image.g, image.b, 1.0);
+        }
+        """
+    )
+    override var outputImage : CIImage! {
+        guard let inputImage = inputImage, let kernel = kernel else {
+            return nil
+        }
+        let extent = inputImage.extent
+        let arguments = [inputImage] as [Any]
+        return kernel.apply(extent: extent, arguments: arguments)
     }
 }

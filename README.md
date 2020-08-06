@@ -172,7 +172,7 @@ This is a list of features currently implemented. You can use this list as a ref
 **PImage / Filters**
 - [x] THRESHOLD
 - [x] GRAY
-- [ ] OPAQUE
+- [x] OPAQUE
 - [x] INVERT
 - [x] POSTERIZE
 - [x] BLUR
