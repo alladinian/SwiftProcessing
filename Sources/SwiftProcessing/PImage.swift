@@ -11,6 +11,7 @@ import CoreGraphics
 #if os(iOS)
 import UIKit
 public class PImage: UIImageView {
+    var rawPixels: UnsafePointer<UInt8>?
     public var pixels: UnsafeMutableBufferPointer<Pixel>?
 }
 typealias Image = UIImage
@@ -19,6 +20,7 @@ typealias Image = UIImage
 #if os(macOS)
 import AppKit
 public class PImage: NSImageView {
+    var rawPixels: UnsafePointer<UInt8>?
     public var pixels: UnsafeMutableBufferPointer<Pixel>?
 }
 typealias Image = NSImage
@@ -177,7 +179,8 @@ public extension PImage {
         var bitmapInfo: UInt32 = CGBitmapInfo.byteOrder32Big.rawValue
         bitmapInfo |= CGImageAlphaInfo.premultipliedLast.rawValue & CGBitmapInfo.alphaInfoMask.rawValue
 
-        guard let imageContext = CGContext(data: imageData, width: width,
+        guard let imageContext = CGContext(data: imageData,
+                                           width: width,
                                            height: height,
                                            bitsPerComponent: bitsPerComponent,
                                            bytesPerRow: bytesPerRow,
@@ -188,6 +191,13 @@ public extension PImage {
         imageContext.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
 
         pixels = UnsafeMutableBufferPointer<Pixel>(start: imageData, count: width * height)
+    }
+
+    private func loadRawPixels() {
+        guard let image = image?.cgImage else { return }
+        guard let provider = image.dataProvider else { return }
+        let pixelData = provider.data
+        rawPixels = CFDataGetBytePtr(pixelData)
     }
 
     func updatePixels() {
