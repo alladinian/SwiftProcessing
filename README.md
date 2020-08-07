@@ -227,6 +227,18 @@ This is a list of features currently implemented. You can use this list as a ref
 - [x] red()
 - [x] saturation()
 
+**Data / Conversion**
+- [x] binary()
+- [x] boolean()
+- [ ] byte()
+- [ ] char()
+- [x] float()
+- [x] hex()
+- [x] int()
+- [x] str()
+- [x] unbinary()
+- [x] unhex()
+
 **Math / Calculation**
 - [x] abs()
 - [x] ceil()
