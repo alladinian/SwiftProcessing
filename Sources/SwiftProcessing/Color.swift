@@ -102,6 +102,10 @@ extension Color {
     var saturation: CGFloat { saturationComponent }
     var brightness: CGFloat { brightnessComponent }
 
+    convenience init(_ v1: Int, _ v2: Int, _ v3: Int, _ alpha: Int = 255) {
+        self.init(red: CGFloat(v1) / 255, green: CGFloat(v2) / 255, blue: CGFloat(v3) / 255, alpha: CGFloat(alpha) / 255)
+    }
+
     convenience init(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 255) {
         self.init(red: v1 / 255, green: v2 / 255, blue: v3 / 255, alpha: alpha / 255)
     }
