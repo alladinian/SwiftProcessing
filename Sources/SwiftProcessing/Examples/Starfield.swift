@@ -89,21 +89,21 @@ class Star {
         let sx = map(x / z, 0, 1, 0, width/2)
         let sy = map(y / z, 0, 1, 0, height/2)
 
-        // I use the z value to increase the star size between a range from 0 to 16.
-        let r = map(z, 0, width/2, 16, 0)
-        ellipse(sx, sy, r, r)
-
         // Here i use the "pz" valute to get the previous position of the stars,
         // so I can draw a line from the previous position to the new (current) one.
         let px = map(x / pz, 0, 1, 0, width/2)
         let py = map(y / pz, 0, 1, 0, height/2)
 
+        stroke(255)
+        line(px, py, sx, sy)
+
+        // I use the z value to increase the star size between a range from 0 to 8.
+        let r = map(z, 0, width/2, 8, 0)
+        ellipse(sx, sy, r, r)
+
         // Placing here this line of code, I'm sure the "pz" value are updated after the
         // coordinates are already calculated; in this way the "pz" value is always equals
         // to the "z" value of the previous frame.
         pz = z
-
-        stroke(255)
-        line(px, py, sx, sy)
     }
 }
