@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class MitosisSketchView: SPSView {
+public class MitosisSketch: SPSView {
     fileprivate var cells = [Cell]()
 
     public override func setup() {

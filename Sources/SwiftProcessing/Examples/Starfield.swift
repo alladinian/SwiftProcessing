@@ -9,7 +9,7 @@ import Foundation
 
 fileprivate var speed: CGFloat!
 
-public class StarfieldSketchView: SPSView {
+public class StarfieldSketch: SPSView {
 
     var stars: [Star]!
 
