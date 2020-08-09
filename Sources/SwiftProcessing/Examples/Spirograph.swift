@@ -8,11 +8,10 @@
 import Foundation
 
 let k          = -4.0
-let angle      = 0
 let resolution = 1.0
 
 public class SpirographSketch: SPSView {
-    lazy var sun = Orbit(width / 2, height / 2, width / 4, 0)
+    lazy var sun = Orbit(width / 2, height / 2, width / 6, 0)
     var end: Orbit!
     var path = [PVector]()
 
@@ -48,6 +47,7 @@ public class SpirographSketch: SPSView {
         noFill()
         for pos in path {
             vertex(pos)
+            //point(CGFloat(pos.x), CGFloat(pos.y))
         }
         endShape()
     }
