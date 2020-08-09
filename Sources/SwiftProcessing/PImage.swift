@@ -35,34 +35,41 @@ typealias Image = NSImage
 public struct Pixel {
     var value: UInt32
     var red: UInt8 {
-        get { return UInt8(value & 0xFF) }
+        get { UInt8(value & 0xFF) }
         set { value = UInt32(newValue) | (value & 0xFFFFFF00) }
     }
     var green: UInt8 {
-        get { return UInt8((value >> 8) & 0xFF) }
+        get { UInt8((value >> 8) & 0xFF) }
         set { value = (UInt32(newValue) << 8) | (value & 0xFFFF00FF) }
     }
     var blue: UInt8 {
-        get { return UInt8((value >> 16) & 0xFF) }
+        get { UInt8((value >> 16) & 0xFF) }
         set { value = (UInt32(newValue) << 16) | (value & 0xFF00FFFF) }
     }
     var alpha: UInt8 {
-        get { return UInt8((value >> 24) & 0xFF) }
+        get { UInt8((value >> 24) & 0xFF) }
         set { value = (UInt32(newValue) << 24) | (value & 0x00FFFFFF) }
+    }
+
+    public init(value: UInt32) {
+        self.value = value
+    }
+
+    public init(_ color: Color) {
+        self.value = color.value
     }
 }
 
 public extension Color {
     var value: UInt32 {
-        let a = Int(alpha * 255) << 24
-        let r = Int(red   * 255) << 16
-        let g = Int(green * 255) << 8
-        let b = Int(blue  * 255)
+        let r = Int(red  )
+        let g = Int(green) << 8
+        let b = Int(blue ) << 16
+        let a = Int(alpha) << 24
         return UInt32(a + r + g + b)
     }
 }
 
-var dirtyPixels: Bool = false
 public extension UnsafeMutableBufferPointer where Element == Pixel {
     subscript(index: Int) -> Color {
         get {
@@ -70,7 +77,6 @@ public extension UnsafeMutableBufferPointer where Element == Pixel {
             return Color(Int(pc.red), Int(pc.green), Int(pc.blue), Int(pc.alpha))
         }
         set(newValue) {
-            //dirtyPixels = newValue != self[index]
             self[index] = Pixel(value: newValue.value)
         }
     }
@@ -169,6 +175,7 @@ public extension PImage {
     func loadPixels() {
         guard let image = image else { return }
         guard let cgImage = image.cgImage else { return }
+        guard pixels == nil else { return }
         let size = image.size
         let bitsPerComponent = 8
         let bytesPerPixel = 4
@@ -201,7 +208,6 @@ public extension PImage {
     }
 
     func updatePixels() {
-        guard dirtyPixels else { return }
         let bitsPerComponent = 8
         let bytesPerPixel = 4
         let bytesPerRow = width * bytesPerPixel
