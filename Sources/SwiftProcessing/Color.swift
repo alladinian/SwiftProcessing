@@ -47,20 +47,18 @@ extension UIColor {
 
 //MARK: - Setting
 
-public extension View {
+public func background(_ white: Int) {
+    push()
+    Color(white: CGFloat(white) / 255, alpha: 1.0).setFill()
+    ctx?.fill(.init(origin: .zero, size: .init(width: width, height: height)))
+    pop()
+}
 
-    private var _layer: CALayer? {
-        layer
-    }
-
-    func background(_ white: Int) {
-        _layer?.backgroundColor = Color(white: CGFloat(white) / 255, alpha: 1.0).cgColor
-    }
-
-    func background(_ color: Color) {
-        _layer?.backgroundColor = color.cgColor
-    }
-
+public func background(_ color: Color) {
+    push()
+    color.setFill()
+    ctx?.fill(.init(origin: .zero, size: .init(width: width, height: height)))
+    pop()
 }
 
 public func fill(_ color: Color) {
