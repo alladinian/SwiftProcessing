@@ -32,13 +32,13 @@ public func dist<T: FloatingPoint>(_ x1: T, _ y1: T, _ x2: T, _ y2: T) -> T {
 }
 
 
-public func lerp(_ start: CGFloat, _ stop: CGFloat, _ amt: CGFloat) -> CGFloat {
+public func lerp<T: FloatingPoint>(_ start: T, _ stop: T, _ amt: T) -> T {
     let f = constrain(amt, 0, 1)
     return start + (stop - start) * f
 }
 
 public func mag(_ a: CGFloat, _ b: CGFloat, _ c: CGFloat) -> CGFloat {
-    CGFloat(PVector(Double(a), Double(b), Double(c)).mag())
+    CGFloat(PVector(a, b, c).mag())
 }
 
 public func map(_ value: CGFloat, _ minRange: CGFloat, _ maxRange: CGFloat, _ minDomain: CGFloat, _ maxDomain: CGFloat) -> CGFloat {

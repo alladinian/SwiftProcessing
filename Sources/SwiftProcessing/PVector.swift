@@ -13,6 +13,10 @@ public typealias PVector = simd_double3
 
 public extension PVector {
 
+    init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat = 0) {
+        self.init(Double(x), Double(y), Double(z))
+    }
+
     /// Sets the x, y, and z component of the vector using three separate variables.
     /// - Parameters:
     ///   - x: The x component of the vector
@@ -250,7 +254,7 @@ public extension PVector {
     /// A new zero length vector
     /// - Returns: A new zero length vector
     static func zero() -> PVector {
-        PVector(0, 0, 0)
+        PVector(0.0, 0.0, 0.0)
     }
 
     private func glkVector() -> GLKVector3 {
