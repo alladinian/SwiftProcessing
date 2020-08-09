@@ -27,7 +27,7 @@ public func constrain<T: Comparable>(_ amt: T, _ low: T, _ high: T) -> T {
     min(max(amt, low), high)
 }
 
-public func dist(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat) -> CGFloat {
+public func dist<T: FloatingPoint>(_ x1: T, _ y1: T, _ x2: T, _ y2: T) -> T {
     sqrt(sq(x2 - x1) + sq(y2 - y1))
 }
 
@@ -50,8 +50,8 @@ public func norm(_ value: CGFloat, _ start: CGFloat, _ stop: CGFloat) -> CGFloat
     map(value, start, stop, 0, 1)
 }
 
-public func sq(_ n: CGFloat) -> CGFloat {
-    pow(n, 2)
+public func sq<T: FloatingPoint>(_ n: T) -> T {
+    n * n
 }
 
 

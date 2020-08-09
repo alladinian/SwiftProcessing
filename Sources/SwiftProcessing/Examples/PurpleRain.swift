@@ -8,7 +8,7 @@
 import Foundation
 import CoreGraphics
 
-public class PurpleRainSketchView: SPSView {
+public class PurpleRainSketch: SPSView {
 
     var drops = [Drop]()
 
