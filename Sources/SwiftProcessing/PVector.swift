@@ -100,10 +100,6 @@ public extension PVector {
         v1 + v2
     }
 
-    static func + (_ lhs: PVector, _ rhs: PVector) -> PVector {
-        PVector(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z)
-    }
-
     mutating func sub(_ v: PVector) {
         self -= v
     }
@@ -118,10 +114,6 @@ public extension PVector {
         v1 - v2
     }
 
-    static func - (_ lhs: PVector, _ rhs: PVector) -> PVector {
-        PVector(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z)
-    }
-
     mutating func mult(_ n: Double) {
         self *= n
     }
@@ -130,20 +122,12 @@ public extension PVector {
         v * n
     }
 
-    static func * (_ lhs: PVector, _ n: Double) -> PVector {
-        PVector(lhs.x * n, lhs.y * n, lhs.z * n)
-    }
-
     mutating func div(_ n: Double) {
         self /= n
     }
 
     static func div(_ v: PVector, _ n: Double) -> PVector {
         v / n
-    }
-
-    static func / (_ lhs: PVector, _ n: Double) -> PVector {
-        PVector(lhs.x / n, lhs.y / n, lhs.z / n)
     }
 
     /// Calculates the Euclidean distance between two points (considering a point as a vector object).
