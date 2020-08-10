@@ -69,6 +69,8 @@ open class SPSView : View, Renderer {
 
     #endif
 
+    open override var isOpaque: Bool { return true }
+
     fileprivate var link: DisplayLink?
 
     fileprivate let stackView = StackView()

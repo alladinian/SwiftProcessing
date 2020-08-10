@@ -47,20 +47,18 @@ extension UIColor {
 
 //MARK: - Setting
 
-public extension View {
+public func background(_ white: Int) {
+    push()
+    Color(white: CGFloat(white) / 255, alpha: 1.0).setFill()
+    ctx?.fill(.init(origin: .zero, size: .init(width: width, height: height)))
+    pop()
+}
 
-    private var _layer: CALayer? {
-        layer
-    }
-
-    func background(_ white: Int) {
-        _layer?.backgroundColor = Color(white: CGFloat(white) / 255, alpha: 1.0).cgColor
-    }
-
-    func background(_ color: Color) {
-        _layer?.backgroundColor = color.cgColor
-    }
-
+public func background(_ color: Color) {
+    push()
+    color.setFill()
+    ctx?.fill(.init(origin: .zero, size: .init(width: width, height: height)))
+    pop()
 }
 
 public func fill(_ color: Color) {
@@ -94,13 +92,17 @@ public func noStroke() {
 //MARK: - Creating & Reading
 
 extension Color {
-    var alpha: CGFloat { alphaComponent }
-    var red: CGFloat { redComponent }
-    var green: CGFloat { greenComponent }
-    var blue: CGFloat { blueComponent }
-    var hue: CGFloat { hueComponent }
-    var saturation: CGFloat { saturationComponent }
-    var brightness: CGFloat { brightnessComponent }
+    var alpha: CGFloat { alphaComponent * 255 }
+    var red: CGFloat { redComponent * 255 }
+    var green: CGFloat { greenComponent * 255 }
+    var blue: CGFloat { blueComponent * 255 }
+    var hue: CGFloat { hueComponent * 255 }
+    var saturation: CGFloat { saturationComponent * 255 }
+    var brightness: CGFloat { brightnessComponent * 255 }
+
+    convenience init(_ v1: Int, _ v2: Int, _ v3: Int, _ alpha: Int = 255) {
+        self.init(red: CGFloat(v1) / 255, green: CGFloat(v2) / 255, blue: CGFloat(v3) / 255, alpha: CGFloat(alpha) / 255)
+    }
 
     convenience init(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 255) {
         self.init(red: v1 / 255, green: v2 / 255, blue: v3 / 255, alpha: alpha / 255)

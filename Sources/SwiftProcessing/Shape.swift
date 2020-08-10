@@ -330,9 +330,14 @@ public func beginShape() {
 }
 
 public func endShape(_ mode: EndShapeMode = .open) {
-    defer { ctx?.fillPath() }
+    defer { ctx?.strokePath() }
     guard mode == .close else { return }
     ctx?.closePath()
+    ctx?.fillPath()
+}
+
+public func vertex(_ v: PVector) {
+    vertex(CGFloat(v.x), CGFloat(v.y))
 }
 
 public func vertex(_ x: CGFloat, _ y: CGFloat) {

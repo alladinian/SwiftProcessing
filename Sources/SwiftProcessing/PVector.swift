@@ -13,6 +13,10 @@ public typealias PVector = simd_double3
 
 public extension PVector {
 
+    init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat = 0) {
+        self.init(Double(x), Double(y), Double(z))
+    }
+
     /// Sets the x, y, and z component of the vector using three separate variables.
     /// - Parameters:
     ///   - x: The x component of the vector
@@ -96,10 +100,6 @@ public extension PVector {
         v1 + v2
     }
 
-    static func + (_ lhs: PVector, _ rhs: PVector) -> PVector {
-        PVector(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z)
-    }
-
     mutating func sub(_ v: PVector) {
         self -= v
     }
@@ -114,10 +114,6 @@ public extension PVector {
         v1 - v2
     }
 
-    static func - (_ lhs: PVector, _ rhs: PVector) -> PVector {
-        PVector(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z)
-    }
-
     mutating func mult(_ n: Double) {
         self *= n
     }
@@ -126,20 +122,12 @@ public extension PVector {
         v * n
     }
 
-    static func * (_ lhs: PVector, _ n: Double) -> PVector {
-        PVector(lhs.x * n, lhs.y * n, lhs.z * n)
-    }
-
     mutating func div(_ n: Double) {
         self /= n
     }
 
     static func div(_ v: PVector, _ n: Double) -> PVector {
         v / n
-    }
-
-    static func / (_ lhs: PVector, _ n: Double) -> PVector {
-        PVector(lhs.x / n, lhs.y / n, lhs.z / n)
     }
 
     /// Calculates the Euclidean distance between two points (considering a point as a vector object).
@@ -250,7 +238,7 @@ public extension PVector {
     /// A new zero length vector
     /// - Returns: A new zero length vector
     static func zero() -> PVector {
-        PVector(0, 0, 0)
+        PVector(0.0, 0.0, 0.0)
     }
 
     private func glkVector() -> GLKVector3 {
