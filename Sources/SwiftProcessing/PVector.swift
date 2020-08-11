@@ -13,8 +13,16 @@ public typealias PVector = simd_double3
 
 public extension PVector {
 
+    init(_ x: Int, _ y: Int, _ z: Int = 0) {
+        self.init(Double(x), Double(y), Double(z))
+    }
+
     init(_ x: CGFloat, _ y: CGFloat, _ z: CGFloat = 0) {
         self.init(Double(x), Double(y), Double(z))
+    }
+
+    init(_ x: Double, _ y: Double) {
+        self.init(x, y, 0)
     }
 
     /// Sets the x, y, and z component of the vector using three separate variables.
@@ -31,9 +39,7 @@ public extension PVector {
     /// Set the components of the vector from another vector
     /// - Parameter v: The vector to copy the components from.
     mutating func set(_ v: PVector) {
-        self.x = v.x
-        self.y = v.y
-        self.z = v.z
+        self.set(v.x, v.y, v.z)
     }
 
     /// Set the components of the vector from a [Double]
@@ -41,10 +47,7 @@ public extension PVector {
     /// This function assumes that the array will be of length 3.
     /// - Parameter source: The Double array
     mutating func set(_ source: [Double]) {
-        precondition(source.count == 3)
-        self.x = source[0]
-        self.y = source[1]
-        self.z = source[2]
+        self.set(PVector(source))
     }
 
     /// Make a new 2D unit vector with a random direction.
@@ -69,6 +72,8 @@ public extension PVector {
     }
 
     /// Get a copy of the vector
+    ///
+    /// In Swift PVector is a value type, so assignment always produces a copy.
     /// - Returns: A new PVector as a copy of the vector
     func copy() -> PVector {
         PVector(x, y, z)
@@ -209,11 +214,20 @@ public extension PVector {
         y = sin(newHeading) * magnitude
     }
 
+    /**
+     Calculates linear interpolation from one vector to another vector. (Just like regular lerp(), but for vectors.)
+
+     Note that there is one static version of this method, and two non-static versions. The static version, lerp(v1, v2, amt) is given the two vectors to interpolate and returns a new PVector object. The static version is used by referencing the PVector class directly. (See the middle example above.) The non-static versions, lerp(v, amt) and lerp(x, y, z, amt), do not create a new PVector, but transform the values of the PVector on which they are called. These non-static versions perform the same operation, but the former takes another vector as input, while the latter takes three float values. (See the top and bottom examples above, respectively.)
+     - Parameters:
+       - v: The vector to lerp to
+       - amount: The amount of interpolation; some value between 0.0 (old vector) and 1.0 (new vector). 0.1 is very near the old vector; 0.5 is halfway in between.
+     - Returns: A PVector as a result of the interpolation
+     */
     func lerp(_ v: PVector, _ amount: Double) -> PVector {
-        let a      = glkVector()
-        let b      = PVector(v.x, v.y, v.z).glkVector()
+        let a      = GLKVector3(self)
+        let b      = GLKVector3(v)
         let result = GLKVector3Lerp(a, b, Float(amount))
-        return PVector.fromGlkVector(result)
+        return PVector(result)
     }
 
     static func lerp(_ v1: PVector, _ v2: PVector, _ amount: Double) -> PVector {
@@ -224,6 +238,11 @@ public extension PVector {
         lerp(PVector(x, y, z), amount)
     }
 
+    /// Calculates and returns the angle (in radians) between two vectors
+    /// - Parameters:
+    ///   - v1: the x, y, and z components of a PVector
+    ///   - v2: the x, y, and z components of a PVector
+    /// - Returns: The angle (in radians) between two vectors
     static func angleBetween(_ v1: PVector, _ v2: PVector) -> Double {
         let dotp = dot(v1, v2)
         let m1 = v1.mag()
@@ -231,6 +250,8 @@ public extension PVector {
         return cos(dotp / (m1 * m2))
     }
 
+    /// Return a representation of this vector as a Double array. This is only for temporary use. If used in any other fashion, the contents should be copied by using the copy() method to copy into your own array.
+    /// - Returns: A representation of this vector as a Double array
     func array() -> [Double] {
         [x, y, z]
     }
@@ -241,13 +262,17 @@ public extension PVector {
         PVector(0.0, 0.0, 0.0)
     }
 
-    private func glkVector() -> GLKVector3 {
-        GLKVector3(v: (Float(x), Float(y), Float(z)))
-    }
+}
 
-    private static func fromGlkVector(_ v: GLKVector3) -> PVector {
-        PVector(Double(v.x), Double(v.y), Double(v.z))
+extension PVector {
+    init(_ v: GLKVector3) {
+        self.init(Double(v.x), Double(v.y), Double(v.z))
     }
+}
 
+extension GLKVector3 {
+    init(_ v: PVector) {
+        self.init(v: (Float(v.x), Float(v.y), Float(v.z)))
+    }
 }
 
