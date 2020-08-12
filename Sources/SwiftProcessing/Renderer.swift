@@ -41,6 +41,10 @@ public protocol Renderer {
 
 extension CGContext: Renderer {
 
+    private var bounds: CGRect {
+        .init(origin: .zero, size: .init(width: width, height: height))
+    }
+
     public func push() {
         saveGState()
     }
@@ -70,7 +74,7 @@ extension CGContext: Renderer {
     }
 
     public func clear() {
-        clear(.init(origin: .zero, size: .init(width: width, height: height)))
+        clear(bounds)
     }
 
     public func beginShape() {
@@ -106,16 +110,13 @@ extension CGContext: Renderer {
     }
 
     public func background(_ white: Int) {
-        push()
-        Color(white: CGFloat(white) / 255, alpha: 1.0).setFill()
-        fill(.init(origin: .zero, size: .init(width: width, height: height)))
-        pop()
+        background(Color(white: CGFloat(white) / 255, alpha: 1.0))
     }
 
     public func background(_ color: Color) {
         push()
         color.setFill()
-        fill(.init(origin: .zero, size: .init(width: width, height: height)))
+        fill(bounds)
         pop()
     }
 
@@ -124,15 +125,15 @@ extension CGContext: Renderer {
     }
 
     public func fill(_ white: Int, _ alpha: CGFloat = 255) {
-        Color(white: CGFloat(white) / 255, alpha: alpha / 255).setFill()
+        fill(Color(white: CGFloat(white) / 255, alpha: alpha / 255))
     }
 
     public func fill(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat) {
-        Color(r, g, b).setFill()
+        fill(Color(r, g, b))
     }
 
     public func noFill() {
-        Color(white: 0, alpha: 0).setFill()
+        fill(Color(white: 0, alpha: 0))
     }
 
     public func stroke(_ color: Color) {
@@ -140,11 +141,11 @@ extension CGContext: Renderer {
     }
 
     public func stroke(_ white: Int, _ alpha: CGFloat = 255) {
-        Color(white: CGFloat(white) / 255, alpha: alpha / 255).setStroke()
+        stroke(Color(white: CGFloat(white) / 255, alpha: alpha / 255))
     }
 
     public func noStroke() {
-        Color(white: 0, alpha: 0).setStroke()
+        stroke(Color(white: 0, alpha: 0))
     }
 
 }
