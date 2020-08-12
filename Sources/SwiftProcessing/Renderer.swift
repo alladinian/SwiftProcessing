@@ -28,6 +28,15 @@ public protocol Renderer {
     func strokeCap(_ cap: CGLineCap)
     func strokeJoin(_ join: CGLineJoin)
     func strokeWeight(_ n: CGFloat)
+    func background(_ white: Int)
+    func background(_ color: Color)
+    func fill(_ color: Color)
+    func fill(_ white: Int, _ alpha: CGFloat)
+    func fill(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat)
+    func noFill()
+    func stroke(_ color: Color)
+    func stroke(_ white: Int, _ alpha: CGFloat)
+    func noStroke()
 }
 
 extension CGContext: Renderer {
@@ -94,6 +103,48 @@ extension CGContext: Renderer {
     public func strokeWeight(_ n: CGFloat) {
         setLineWidth(n)
         currentStrokeWeight = n
+    }
+
+    public func background(_ white: Int) {
+        push()
+        Color(white: CGFloat(white) / 255, alpha: 1.0).setFill()
+        fill(.init(origin: .zero, size: .init(width: width, height: height)))
+        pop()
+    }
+
+    public func background(_ color: Color) {
+        push()
+        color.setFill()
+        fill(.init(origin: .zero, size: .init(width: width, height: height)))
+        pop()
+    }
+
+    public func fill(_ color: Color) {
+        color.setFill()
+    }
+
+    public func fill(_ white: Int, _ alpha: CGFloat = 255) {
+        Color(white: CGFloat(white) / 255, alpha: alpha / 255).setFill()
+    }
+
+    public func fill(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat) {
+        Color(r, g, b).setFill()
+    }
+
+    public func noFill() {
+        Color(white: 0, alpha: 0).setFill()
+    }
+
+    public func stroke(_ color: Color) {
+        color.setStroke()
+    }
+
+    public func stroke(_ white: Int, _ alpha: CGFloat = 255) {
+        Color(white: CGFloat(white) / 255, alpha: alpha / 255).setStroke()
+    }
+
+    public func noStroke() {
+        Color(white: 0, alpha: 0).setStroke()
     }
 
 }

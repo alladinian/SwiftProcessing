@@ -48,45 +48,39 @@ extension UIColor {
 //MARK: - Setting
 
 public func background(_ white: Int) {
-    push()
-    Color(white: CGFloat(white) / 255, alpha: 1.0).setFill()
-    ctx?.fill(.init(origin: .zero, size: .init(width: width, height: height)))
-    pop()
+    renderer.background(white)
 }
 
 public func background(_ color: Color) {
-    push()
-    color.setFill()
-    ctx?.fill(.init(origin: .zero, size: .init(width: width, height: height)))
-    pop()
+    renderer.background(color)
 }
 
 public func fill(_ color: Color) {
-    color.setFill()
+    renderer.fill(color)
 }
 
 public func fill(_ white: Int, _ alpha: CGFloat = 255) {
-    Color(white: CGFloat(white) / 255, alpha: alpha / 255).setFill()
+    renderer.fill(white, alpha)
 }
 
 public func fill(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat) {
-    Color(r, g, b).setFill()
+    renderer.fill(r, g, b)
 }
 
 public func noFill() {
-    Color(white: 0, alpha: 0).setFill()
+    renderer.noFill()
 }
 
 public func stroke(_ color: Color) {
-    color.setStroke()
+    renderer.stroke(color)
 }
 
 public func stroke(_ white: Int, _ alpha: CGFloat = 255) {
-    Color(white: CGFloat(white) / 255, alpha: alpha / 255).setStroke()
+    renderer.stroke(white, alpha)
 }
 
 public func noStroke() {
-    Color(white: 0, alpha: 0).setStroke()
+    renderer.noStroke()
 }
 
 //MARK: - Creating & Reading
