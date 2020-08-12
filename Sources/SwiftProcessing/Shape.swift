@@ -224,8 +224,8 @@ public func rect(_ a: CGFloat,
                           topRight: tr,
                           bottomRight: br,
                           bottomLeft: bl)
-    path.fill()
     path.stroke()
+    path.fill()
 }
 
 /**
@@ -276,8 +276,7 @@ public func strokeWeight(_ n: Int) {
 }
 
 public func strokeWeight(_ n: CGFloat) {
-    ctx?.setLineWidth(n)
-    currentStrokeWeight = n
+    renderer.strokeWeight(n)
 }
 
 public enum EllipseMode: Int {
@@ -308,11 +307,11 @@ public extension CGLineJoin {
 }
 
 public func strokeCap(_ cap: CGLineCap) {
-    ctx?.setLineCap(cap)
+    renderer.strokeCap(cap)
 }
 
 public func strokeJoin(_ join: CGLineJoin) {
-    ctx?.setLineJoin(join)
+    renderer.strokeJoin(join)
 }
 
 //MARK: - Vertex
@@ -326,14 +325,11 @@ extension View {
 }
 
 public func beginShape() {
-    ctx?.beginPath()
+    renderer.beginShape()
 }
 
 public func endShape(_ mode: EndShapeMode = .open) {
-    defer { ctx?.strokePath() }
-    guard mode == .close else { return }
-    ctx?.closePath()
-    ctx?.fillPath()
+    renderer.endShape(mode)
 }
 
 public func vertex(_ v: PVector) {
@@ -341,11 +337,7 @@ public func vertex(_ v: PVector) {
 }
 
 public func vertex(_ x: CGFloat, _ y: CGFloat) {
-    guard ctx?.isPathEmpty == false else {
-        ctx?.move(to: .init(x: x, y: y))
-        return
-    }
-    ctx?.addLine(to: .init(x: x, y: y))
+    renderer.vertex(x, y)
 }
 
 
