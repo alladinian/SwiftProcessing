@@ -79,6 +79,10 @@ public func stroke(_ white: Int, _ alpha: CGFloat = 255) {
     renderer.stroke(white, alpha)
 }
 
+public func stroke(_ r: Int, _ g: Int, _ b: Int, _ a: Int = 255) {
+    renderer.stroke(r, g, b, a)
+}
+
 public func noStroke() {
     renderer.noStroke()
 }

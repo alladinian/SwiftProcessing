@@ -143,6 +143,10 @@ public func line(_ x1: CGFloat,
     path.stroke()
 }
 
+public func line(_ a: PVector, _ b: PVector) {
+    line(CGFloat(a.x), CGFloat(a.y), CGFloat(b.x), CGFloat(b.y))
+}
+
  /**
  Draws a point, a coordinate in space at the dimension of one pixel. The first parameter is the horizontal value for the point, the second value is the vertical value for the point, and the optional third value is the depth value. Drawing this shape in 3D with the z parameter requires the P3D parameter in combination with size() as shown in the above example.
 

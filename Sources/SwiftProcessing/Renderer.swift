@@ -36,6 +36,7 @@ public protocol Renderer {
     func noFill()
     func stroke(_ color: Color)
     func stroke(_ white: Int, _ alpha: CGFloat)
+    func stroke(_ r: Int, _ g: Int, _ b: Int, _ a: Int)
     func noStroke()
 }
 
@@ -142,6 +143,10 @@ extension CGContext: Renderer {
 
     public func stroke(_ white: Int, _ alpha: CGFloat = 255) {
         stroke(Color(white: CGFloat(white) / 255, alpha: alpha / 255))
+    }
+
+    public func stroke(_ r: Int, _ g: Int, _ b: Int, _ a: Int = 255) {
+        stroke(Color(r, g, b, a))
     }
 
     public func noStroke() {
