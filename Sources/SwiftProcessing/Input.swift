@@ -10,6 +10,7 @@ import Foundation
 #if os(macOS)
 import AppKit
 
+//MARK: - Mouse
 public extension SPSView {
 
     var pmouseX: CGFloat {
@@ -114,6 +115,23 @@ public extension SPSView {
                                             options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
                                             owner: self,
                                             userInfo: nil))
+    }
+
+}
+
+//MARK: - Keyboard
+public extension SPSView {
+
+    override func keyDown(with event: NSEvent) {
+        super.keyDown(with: event)
+        key = event.characters?.first
+        keyPressed()
+    }
+
+    override func keyUp(with event: NSEvent) {
+        super.keyUp(with: event)
+        key = event.characters?.first
+        keyReleased()
     }
 
 }

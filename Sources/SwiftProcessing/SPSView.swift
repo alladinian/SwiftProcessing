@@ -65,9 +65,19 @@ open class SPSView : View, Sketch {
     open func mouseMoved() {}
     open func mouseDragged() {}
 
+    /// The most recent key pressed, if any
+    public var key: Character?
+
+    open func keyTyped() {}
+    open func keyPressed() {}
+    open func keyReleased() {}
+
+
     #endif
 
     open override var isOpaque: Bool { return true }
+
+    open override var acceptsFirstResponder: Bool { true }
 
     fileprivate var link: DisplayLink?
 
@@ -167,9 +177,7 @@ open class SPSView : View, Sketch {
         return slider
     }
 
-    @objc func sliderDidChange(_ sender: Slider) {
-
-    }
+    @objc func sliderDidChange(_ sender: Slider) {}
 
     public func loop() {
         link?.isPaused = false

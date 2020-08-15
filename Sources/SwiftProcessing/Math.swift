@@ -33,8 +33,7 @@ public func dist<T: FloatingPoint>(_ x1: T, _ y1: T, _ x2: T, _ y2: T) -> T {
 
 
 public func lerp<T: FloatingPoint>(_ start: T, _ stop: T, _ amt: T) -> T {
-    let f = constrain(amt, 0, 1)
-    return start + (stop - start) * f
+    start + (stop - start) * constrain(amt, 0, 1)
 }
 
 public func mag(_ a: CGFloat, _ b: CGFloat, _ c: CGFloat) -> CGFloat {
@@ -50,7 +49,7 @@ public func norm(_ value: CGFloat, _ start: CGFloat, _ stop: CGFloat) -> CGFloat
     map(value, start, stop, 0, 1)
 }
 
-public func sq<T: FloatingPoint>(_ n: T) -> T {
+public func sq<T: Numeric>(_ n: T) -> T {
     n * n
 }
 
