@@ -8,6 +8,49 @@
 import Foundation
 import CoreGraphics
 
+protocol Shape {
+    var position: CGPoint { get }
+    var path: CGPath { get }
+}
+
+struct Arc: Shape {
+    let position: CGPoint
+    let path: CGPath
+
+    init(position: CGPoint, width: CGFloat, height: CGFloat, start: CGFloat, stop: CGFloat) {
+        self.position = position
+
+        var start = start
+        var stop = stop
+
+        // Mac's implementation expects angles in degrees
+        #if os(macOS)
+        start = degrees(start)
+        stop  = degrees(stop)
+        #endif
+
+        let path = BezierPath()
+
+        #if os(iOS)
+        path.addArc(withCenter: position,
+                    radius: width / 2,
+                    startAngle: start,
+                    endAngle: stop,
+                    clockwise: false)
+        #endif
+
+        #if os(macOS)
+        path.appendArc(withCenter: position,
+                       radius: width / 2,
+                       startAngle: start,
+                       endAngle: stop,
+                       clockwise: false)
+        #endif
+
+        self.path = path.cgPath
+    }
+}
+
 //MARK: - 2D Primitives
 
 /**
@@ -34,8 +77,6 @@ public func arc(_ a: CGFloat,
                 _ stop: CGFloat,
                 _ mode: Any? = nil) {
     #warning("add modes")
-    //push()
-    //translate(a, b)
     var start = start
     var stop = stop
 
@@ -64,8 +105,6 @@ public func arc(_ a: CGFloat,
     #endif
 
     path.stroke()
-    //path.fill()
-    //pop()
 }
 
 /**
@@ -324,7 +363,7 @@ public enum EndShapeMode: Int {
     case open, close
 }
 
-extension View {
+extension SPView {
     public var CLOSE: EndShapeMode { EndShapeMode.close }
 }
 

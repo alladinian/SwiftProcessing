@@ -12,8 +12,8 @@ var delta: CGFloat = 10
 
 public class StarPatternsSketch: SPSView {
 
-    var deltaSlider: Slider!
-    var angleSlider: Slider!
+    var deltaSlider: SPSlider!
+    var angleSlider: SPSlider!
 
     var polys = [Polygon]()
 

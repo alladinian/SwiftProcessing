@@ -11,7 +11,7 @@ import CoreGraphics
 public class FractalTreeSketch: SPSView {
 
     var angle: CGFloat!
-    var slider: Slider!
+    var slider: SPSlider!
 
     public override func setup() {
         slider = createSlider(0, TWO_PI, PI/4, 0.01)

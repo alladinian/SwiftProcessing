@@ -10,14 +10,14 @@ import CoreGraphics
 
 #if canImport(AppKit)
 import AppKit
-public typealias View      = NSView
-public typealias Slider    = NSSlider
-public typealias StackView = NSStackView
+public typealias SPView      = NSView
+public typealias SPSlider    = NSSlider
+public typealias SPStackView = NSStackView
 #elseif canImport(UIKit)
 import UIKit
-public typealias View      = UIView
-public typealias Slider    = UISlider
-public typealias StackView = UIStackView
+public typealias SPView      = UIView
+public typealias SPSlider    = UISlider
+public typealias SPStackView = UIStackView
 
 extension UISlider {
     public var doubleValue: CGFloat {
@@ -35,7 +35,7 @@ var ctx: CGContext? {
     #endif
 }
 
-open class SPSView : View, Sketch {
+open class SPSView : SPView, Sketch {
 
     #if os(macOS)
     public override var isFlipped: Bool { return true }
@@ -81,7 +81,7 @@ open class SPSView : View, Sketch {
 
     fileprivate var link: DisplayLink?
 
-    fileprivate let stackView = StackView()
+    fileprivate let stackView = SPStackView()
 
     public var width: CGFloat { bounds.width }
     public var height: CGFloat { bounds.height }
@@ -162,9 +162,9 @@ open class SPSView : View, Sketch {
     }
     #endif
 
-    public func createSlider(_ min: CGFloat, _ max: CGFloat, _ default: CGFloat, _ step: CGFloat) -> Slider {
+    public func createSlider(_ min: CGFloat, _ max: CGFloat, _ default: CGFloat, _ step: CGFloat) -> SPSlider {
         #if os(macOS)
-        let slider = Slider(value: Double(`default`), minValue: Double(min), maxValue: Double(max), target: self, action: #selector(sliderDidChange))
+        let slider = SPSlider(value: Double(`default`), minValue: Double(min), maxValue: Double(max), target: self, action: #selector(sliderDidChange))
         #endif
 
         #if os(iOS)
@@ -177,7 +177,7 @@ open class SPSView : View, Sketch {
         return slider
     }
 
-    @objc func sliderDidChange(_ sender: Slider) {}
+    @objc func sliderDidChange(_ sender: SPSlider) {}
 
     public func loop() {
         link?.isPaused = false

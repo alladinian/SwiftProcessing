@@ -55,12 +55,12 @@ public struct Pixel {
         self.value = value
     }
 
-    public init(_ color: Color) {
+    public init(_ color: SPColor) {
         self.value = color.value
     }
 }
 
-public extension Color {
+public extension SPColor {
     var value: UInt32 {
         let r = Int(red  )
         let g = Int(green) << 8
@@ -71,10 +71,10 @@ public extension Color {
 }
 
 public extension UnsafeMutableBufferPointer where Element == Pixel {
-    subscript(index: Int) -> Color {
+    subscript(index: Int) -> SPColor {
         get {
             let pc: Pixel = self[index]
-            return Color(Int(pc.red), Int(pc.green), Int(pc.blue), Int(pc.alpha))
+            return SPColor(Int(pc.red), Int(pc.green), Int(pc.blue), Int(pc.alpha))
         }
         set(newValue) {
             self[index] = Pixel(value: newValue.value)

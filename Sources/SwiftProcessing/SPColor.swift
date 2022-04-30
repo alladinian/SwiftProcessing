@@ -7,11 +7,11 @@
 
 #if canImport(AppKit)
 import AppKit
-public typealias Color = NSColor
+public typealias SPColor = NSColor
 #endif
 #if canImport(UIKit)
 import UIKit
-public typealias Color = UIColor
+public typealias SPColor = UIColor
 
 extension UIColor {
     var alphaComponent: CGFloat {
@@ -51,11 +51,11 @@ public func background(_ white: Int) {
     renderer.background(white)
 }
 
-public func background(_ color: Color) {
+public func background(_ color: SPColor) {
     renderer.background(color)
 }
 
-public func fill(_ color: Color) {
+public func fill(_ color: SPColor) {
     renderer.fill(color)
 }
 
@@ -71,7 +71,7 @@ public func noFill() {
     renderer.noFill()
 }
 
-public func stroke(_ color: Color) {
+public func stroke(_ color: SPColor) {
     renderer.stroke(color)
 }
 
@@ -89,7 +89,7 @@ public func noStroke() {
 
 //MARK: - Creating & Reading
 
-extension Color {
+extension SPColor {
     var alpha: CGFloat { alphaComponent * 255 }
     var red: CGFloat { redComponent * 255 }
     var green: CGFloat { greenComponent * 255 }
@@ -107,38 +107,38 @@ extension Color {
     }
 }
 
-public func color(_ white: Int, _ alpha: CGFloat = 255) -> Color {
-    Color(white: CGFloat(white) / 255, alpha: alpha / 255)
+public func color(_ white: Int, _ alpha: CGFloat = 255) -> SPColor {
+    SPColor(white: CGFloat(white) / 255, alpha: alpha / 255)
 }
 
-public func color(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 255) -> Color {
-    Color(red: v1 / 255, green: v2 / 255, blue: v3 / 255, alpha: alpha / 255)
+public func color(_ v1: CGFloat, _ v2: CGFloat, _ v3: CGFloat, _ alpha: CGFloat = 255) -> SPColor {
+    SPColor(red: v1 / 255, green: v2 / 255, blue: v3 / 255, alpha: alpha / 255)
 }
 
-public func alpha(_ c: Color) -> CGFloat {
+public func alpha(_ c: SPColor) -> CGFloat {
     c.alpha
 }
 
-public func red(_ c: Color) -> CGFloat {
+public func red(_ c: SPColor) -> CGFloat {
     c.red
 }
 
-public func green(_ c: Color) -> CGFloat {
+public func green(_ c: SPColor) -> CGFloat {
     c.green
 }
 
-public func blue(_ c: Color) -> CGFloat {
+public func blue(_ c: SPColor) -> CGFloat {
     c.blue
 }
 
-public func hue(_ c: Color) -> CGFloat {
+public func hue(_ c: SPColor) -> CGFloat {
     c.hue
 }
 
-public func saturation(_ c: Color) -> CGFloat {
+public func saturation(_ c: SPColor) -> CGFloat {
     c.saturation
 }
 
-public func brightness(_ c: Color) -> CGFloat {
+public func brightness(_ c: SPColor) -> CGFloat {
     c.brightness
 }

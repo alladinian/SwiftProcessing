@@ -40,9 +40,9 @@ public class MitosisSketch: SPSView {
 fileprivate class Cell {
     var pos: PVector
     let r: CGFloat
-    let c: Color
+    let c: SPColor
 
-    init(_ pos: PVector,_ r: CGFloat, _ c: Color) {
+    init(_ pos: PVector,_ r: CGFloat, _ c: SPColor) {
         self.pos = pos
         self.r = r
         self.c = c

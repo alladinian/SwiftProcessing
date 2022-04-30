@@ -29,12 +29,12 @@ public protocol Renderer {
     func strokeJoin(_ join: CGLineJoin)
     func strokeWeight(_ n: CGFloat)
     func background(_ white: Int)
-    func background(_ color: Color)
-    func fill(_ color: Color)
+    func background(_ color: SPColor)
+    func fill(_ color: SPColor)
     func fill(_ white: Int, _ alpha: CGFloat)
     func fill(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat)
     func noFill()
-    func stroke(_ color: Color)
+    func stroke(_ color: SPColor)
     func stroke(_ white: Int, _ alpha: CGFloat)
     func stroke(_ r: Int, _ g: Int, _ b: Int, _ a: Int)
     func noStroke()
@@ -111,46 +111,46 @@ extension CGContext: Renderer {
     }
 
     public func background(_ white: Int) {
-        background(Color(white: CGFloat(white) / 255, alpha: 1.0))
+        background(SPColor(white: CGFloat(white) / 255, alpha: 1.0))
     }
 
-    public func background(_ color: Color) {
+    public func background(_ color: SPColor) {
         push()
         color.setFill()
         fill(bounds)
         pop()
     }
 
-    public func fill(_ color: Color) {
+    public func fill(_ color: SPColor) {
         color.setFill()
     }
 
     public func fill(_ white: Int, _ alpha: CGFloat = 255) {
-        fill(Color(white: CGFloat(white) / 255, alpha: alpha / 255))
+        fill(SPColor(white: CGFloat(white) / 255, alpha: alpha / 255))
     }
 
     public func fill(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat) {
-        fill(Color(r, g, b))
+        fill(SPColor(r, g, b))
     }
 
     public func noFill() {
-        fill(Color(white: 0, alpha: 0))
+        fill(SPColor(white: 0, alpha: 0))
     }
 
-    public func stroke(_ color: Color) {
+    public func stroke(_ color: SPColor) {
         color.setStroke()
     }
 
     public func stroke(_ white: Int, _ alpha: CGFloat = 255) {
-        stroke(Color(white: CGFloat(white) / 255, alpha: alpha / 255))
+        stroke(SPColor(white: CGFloat(white) / 255, alpha: alpha / 255))
     }
 
     public func stroke(_ r: Int, _ g: Int, _ b: Int, _ a: Int = 255) {
-        stroke(Color(r, g, b, a))
+        stroke(SPColor(r, g, b, a))
     }
 
     public func noStroke() {
-        stroke(Color(white: 0, alpha: 0))
+        stroke(SPColor(white: 0, alpha: 0))
     }
 
 }
